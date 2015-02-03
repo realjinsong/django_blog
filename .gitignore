@@ -2,3 +2,4 @@
 *.pyo
 django_blog/settings/prod.py
 colletedstatic
+.idea
