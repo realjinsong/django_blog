@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-
+import logging
+import pdb
 from django.shortcuts import (render, redirect,
                               get_object_or_404, get_list_or_404)
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 
 from .models import Blog, Tag
-
+logger = logging.getLogger('django')
 
 def about(request):
     return render(request, 'about.html')
@@ -29,6 +30,7 @@ def _query_blogs(request, pagination=False, **criteria):
     如果 pagination=False, 返回blog list
     page_num = -1 表示不能在分页了
     """
+    logger.info('test')
     # “发布”状态
     criteria['status'] = 'p'
     if not (request.user and request.user.is_superuser):
