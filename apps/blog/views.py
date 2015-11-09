@@ -30,7 +30,6 @@ def _query_blogs(request, pagination=False, **criteria):
     如果 pagination=False, 返回blog list
     page_num = -1 表示不能在分页了
     """
-    logger.info('test')
     # “发布”状态
     criteria['status'] = 'p'
     if not (request.user and request.user.is_superuser):
@@ -39,7 +38,6 @@ def _query_blogs(request, pagination=False, **criteria):
     if pagination is True:
         paginator = Paginator(blog_list, settings.PAGE_SIZE)
         page_num = request.GET.get('p', 1)
-        print paginator.num_pages
         try:
             blogs = paginator.page(page_num)
         except PageNotAnInteger:
